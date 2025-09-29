@@ -1,0 +1,28 @@
+{
+  "navigation": {
+    "brand": "SafetySwift",
+    "localeToggle": "Idioma",
+    "login": "Iniciar sesión"
+  },
+  "hero": {
+    "title": "SafetySwift mantiene a tus equipos seguros y en cumplimiento.",
+    "subtitle": "Gestiona incidentes, controla certificaciones y genera formularios OSHA sin salir del navegador.",
+    "primaryCta": "Entrar a la app",
+    "secondaryCta": "Solicitar una demo"
+  },
+  "features": {
+    "title": "Todo lo que los contratistas necesitan para estar listos ante OSHA",
+    "incidentReporting": {
+      "title": "Reporte de incidentes",
+      "description": "Captura incidentes en campo con fotos, testimonios y tareas de seguimiento en minutos."
+    },
+    "certificationTracking": {
+      "title": "Control de certificaciones",
+      "description": "Monitorea credenciales, envía alertas de vencimiento y mantiene al equipo listo para la obra."
+    },
+    "oshaForms": {
+      "title": "Formularios OSHA en un clic",
+      "description": "Genera los formularios oficiales OSHA 300, 300A y 301 con los datos de tus incidentes."
+    }
+  }
+}

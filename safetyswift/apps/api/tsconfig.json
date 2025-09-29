@@ -1,0 +1,14 @@
+{
+  "extends": "@safetyswift/config/tsconfig/base.json",
+  "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "outDir": "dist",
+    "rootDir": "src",
+    "types": ["node", "vitest/globals"],
+    "resolveJsonModule": true,
+    "baseUrl": "./src"
+  },
+  "include": ["src", "prisma", "test", "vitest.config.ts"],
+  "exclude": ["dist", "node_modules"]
+}

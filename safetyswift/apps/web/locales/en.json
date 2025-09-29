@@ -1,0 +1,28 @@
+{
+  "navigation": {
+    "brand": "SafetySwift",
+    "localeToggle": "Language",
+    "login": "Log in"
+  },
+  "hero": {
+    "title": "SafetySwift keeps your crews safe and compliant.",
+    "subtitle": "Manage incidents, track certifications, and generate OSHA forms without leaving your browser.",
+    "primaryCta": "Enter the app",
+    "secondaryCta": "Book a demo"
+  },
+  "features": {
+    "title": "Everything contractors need to stay OSHA-ready",
+    "incidentReporting": {
+      "title": "Incident reporting",
+      "description": "Capture field incidents with photos, witness statements, and follow-up tasks in minutes."
+    },
+    "certificationTracking": {
+      "title": "Certification tracking",
+      "description": "Monitor worker credentials, send expiration alerts, and keep crews site-ready."
+    },
+    "oshaForms": {
+      "title": "One-click OSHA forms",
+      "description": "Generate official OSHA 300, 300A, and 301 PDFs populated with your incident data."
+    }
+  }
+}
