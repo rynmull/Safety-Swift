@@ -1,0 +1,35 @@
+# dependencies
+node_modules
+.pnp
+.pnp.js
+
+# testing
+coverage
+
+# production
+build
+.next
+out
+dist
+
+# misc
+.DS_Store
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+*.log
+pnpm-debug.log*
+.vscode
+.idea
+.turbo
+.svelte-kit
+
+# prisma
+tmp
+.prisma
+
+# docker
+data/
+
