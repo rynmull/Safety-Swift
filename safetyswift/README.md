@@ -1,6 +1,7 @@
 # SafetySwift
 
-SafetySwift is a SaaS platform that helps contractors manage safety compliance with incident reporting, certification tracking, and OSHA form generation.
+SafetySwift is a SaaS platform that helps contractors manage safety compliance with incident reporting, certification tracking,
+and OSHA form generation.
 
 ## Monorepo structure
 
@@ -47,13 +48,21 @@ SafetySwift is a SaaS platform that helps contractors manage safety compliance w
    pnpm --filter @safetyswift/api db:seed
    ```
 
-5. Start the development servers (web and api):
+5. Start the development servers in separate terminals:
 
    ```bash
-   pnpm dev
+   pnpm --filter @safetyswift/api run dev
+   pnpm --filter @safetyswift/web run dev
    ```
 
-6. Run tests, linting, and type checks:
+6. Sign in with the seeded owner account to verify authentication:
+
+   ```text
+   Email:    owner@acme.test
+   Password: Password123!
+   ```
+
+7. Run tests, linting, and type checks:
 
    ```bash
    pnpm test
