@@ -98,11 +98,12 @@ model CertificationTemplate {
 model EmployeeCertification {
   id         String     @id @default(cuid())
   employeeId String
+  employee   Employee   @relation(fields: [employeeId], references: [id])
   templateId String
+  template   CertificationTemplate @relation(fields: [templateId], references: [id])
   issuedAt   DateTime
   expiresAt  DateTime
   fileKey    String?    // S3
-  employee   Employee   @relation(fields: [employeeId], references: [id])
-  template   CertificationTemplate @relation(fields: [templateId], references: [id])
+
   @@index([expiresAt])
 }
