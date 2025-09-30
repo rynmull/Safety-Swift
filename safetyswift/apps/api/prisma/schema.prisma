@@ -1,35 +1,108 @@
-generator client {
-  provider = "prisma-client-js"
-}
-
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
-enum UserRole {
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Org {
+  id             String                  @id @default(cuid())
+  name           String
+  users          OrgUser[]
+  employees      Employee[]
+  incidents      Incident[]
+  certifications CertificationTemplate[]
+  createdAt      DateTime                @default(now())
+  updatedAt      DateTime                @updatedAt
+}
+
+model User {
+  id        String    @id @default(cuid())
+  email     String    @unique
+  password  String
+  name      String?
+  orgs      OrgUser[]
+  locale    String    @default("en") // "en" | "es"
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model OrgUser {
+  id     String  @id @default(cuid())
+  orgId  String
+  userId String
+  role   OrgRole
+  org    Org     @relation(fields: [orgId], references: [id])
+  user   User    @relation(fields: [userId], references: [id])
+
+  @@unique([orgId, userId])
+}
+
+enum OrgRole {
   OWNER
   MANAGER
   WORKER
 }
 
-model User {
-  id        String     @id @default(cuid())
-  email     String     @unique
-  name      String?
-  role      UserRole   @default(WORKER)
-  createdAt DateTime   @default(now())
-  updatedAt DateTime   @updatedAt
-  incidents Incident[]
+model Employee {
+  id        String                  @id @default(cuid())
+  orgId     String
+  firstName String
+  lastName  String
+  dob       DateTime?
+  jobTitle  String?
+  hireDate  DateTime?
+  org       Org                     @relation(fields: [orgId], references: [id])
+  certs     EmployeeCertification[]
+  incidents Incident[]              @relation("EmployeeIncidents")
+  createdAt DateTime                @default(now())
+  updatedAt DateTime                @updatedAt
 }
 
 model Incident {
-  id           String   @id @default(cuid())
-  title        String
-  description  String
-  reportedAt   DateTime @default(now())
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
-  reportedBy   User     @relation(fields: [reportedById], references: [id])
-  reportedById String
+  id             String       @id @default(cuid())
+  orgId          String
+  employeeId     String?
+  occurredAt     DateTime
+  location       String
+  description    String
+  treatment      String? // first aid, ER, hospitalization, etc.
+  lostDays       Int? // for OSHA 300
+  restrictedDays Int?
+  attachments    Attachment[]
+  org            Org          @relation(fields: [orgId], references: [id])
+  employee       Employee?    @relation("EmployeeIncidents", fields: [employeeId], references: [id])
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+}
+
+model Attachment {
+  id         String   @id @default(cuid())
+  incidentId String
+  key        String // S3 key
+  filename   String
+  mime       String
+  incident   Incident @relation(fields: [incidentId], references: [id])
+}
+
+model CertificationTemplate {
+  id        String   @id @default(cuid())
+  orgId     String
+  name      String // e.g., "Forklift Operator"
+  validDays Int // 1095 for 3 years, etc.
+  org       Org     @relation(fields: [orgId], references: [id])
+}
+
+model EmployeeCertification {
+  id         String     @id @default(cuid())
+  employeeId String
+  templateId String
+  issuedAt   DateTime
+  expiresAt  DateTime
+  fileKey    String? // S3
+  employee   Employee   @relation(fields: [employeeId], references: [id])
+
+  @@index([expiresAt])
 }
