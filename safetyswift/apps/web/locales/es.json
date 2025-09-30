@@ -24,5 +24,40 @@
       "title": "Formularios OSHA en un clic",
       "description": "Genera los formularios oficiales OSHA 300, 300A y 301 con los datos de tus incidentes."
     }
+  },
+  "auth": {
+    "shared": {
+      "emailLabel": "Correo electrónico",
+      "passwordLabel": "Contraseña",
+      "submitting": "Enviando..."
+    },
+    "login": {
+      "title": "Bienvenido de nuevo",
+      "subtitle": "Inicia sesión para acceder a tu panel de SafetySwift.",
+      "submit": "Iniciar sesión",
+      "noAccount": "¿No tienes una cuenta?",
+      "registerCta": "Crea una",
+      "invalidCredentials": "No pudimos verificar ese correo y contraseña."
+    },
+    "register": {
+      "title": "Crea tu cuenta de SafetySwift",
+      "subtitle": "Configura tu organización e invita a tu equipo en minutos.",
+      "submit": "Crear cuenta",
+      "nameLabel": "Tu nombre",
+      "orgLabel": "Nombre de la organización",
+      "localeLabel": "Idioma preferido",
+      "localeEnglish": "Inglés",
+      "localeSpanish": "Español",
+      "haveAccount": "¿Ya tienes una cuenta?",
+      "loginCta": "Inicia sesión",
+      "genericError": "No pudimos crear tu cuenta. Inténtalo de nuevo."
+    },
+    "errors": {
+      "email": "Ingresa un correo electrónico válido.",
+      "password": "La contraseña es obligatoria.",
+      "passwordLength": "La contraseña debe tener al menos 8 caracteres.",
+      "name": "Ingresa un nombre.",
+      "orgName": "El nombre de la organización debe tener al menos 2 caracteres."
+    }
   }
 }

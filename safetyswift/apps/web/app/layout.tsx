@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import type { ReactNode } from 'react';
+import { Providers } from './providers';
 import en from '../locales/en.json';
 import './globals.css';
 
@@ -19,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body className="min-h-screen bg-gradient-to-b from-white via-slate-50 to-slate-100 text-slate-900">
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
